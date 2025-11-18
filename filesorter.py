@@ -1,15 +1,11 @@
 import os
 
-location = "C:/Users/Adam/Desktop/Testdateien" #TODO: change to input()
+location = "C:/Users/Adam/Desktop/Testdateie" #TODO: change to input()
 
-#if os.path.exists(location):
-#     os.mkdir(location + "/IMAGES")
-#     os.mkdir(location + "/VIDEOS")
-#     os.mkdir(location + "/TEXT_FILES")
-#     os.mkdir(location + "/JSON_FILES")
-#     os.mkdir(location + "/CSV_FILES")
-# else:
-#     print("That location doesn't exist")
+if not os.path.exists(location):
+    print("Location does not exist")
+    quit()
+    
 
 files = os.listdir(location)
 # filtering only the files
@@ -33,7 +29,7 @@ for file in files:
         else:
             os.mkdir(location + "/IMAGES")
             # move file into new folder
-            
+
     if parts[1] in file_types.get("VIDEO"):
         # print(f"{file} -> {parts[1]}")
         if os.path.exists(location + "/VIDEOS"):
