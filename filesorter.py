@@ -1,11 +1,11 @@
 import os
+import shutil
 
-location = "C:/Users/Adam/Desktop/Testdateie" #TODO: change to input()
+location = "C:/Users/Adam/Desktop/Testdateien" #TODO: change to input()
 
 if not os.path.exists(location):
-    print("Location does not exist")
-    quit()
-    
+    print(f"Location does not exist: {location}")
+    quit()    
 
 files = os.listdir(location)
 # filtering only the files
@@ -23,45 +23,50 @@ for file in files:
 
     if parts[1] in file_types.get("IMAGE"):
         # print(f"{file} -> {parts[1]}")
-        if os.path.exists(location + "/IMAGES"):
-            # move file into folder
-            pass        
+        if os.path.exists(f"{location}/IMAGES"):
+            shutil.move(f"{location}/{file}", f"{location}/IMAGES") 
+            print(f"Moved {file} to {location}/IMAGES")
         else:
-            os.mkdir(location + "/IMAGES")
-            # move file into new folder
+            os.mkdir(f"{location}/IMAGES")
+            shutil.move(f"{location}/{file}", f"{location}/IMAGES")
+            print(f"Moved {file} to {location}/IMAGES")
 
     if parts[1] in file_types.get("VIDEO"):
         # print(f"{file} -> {parts[1]}")
-        if os.path.exists(location + "/VIDEOS"):
-            # move file into folder
-            pass
+        if os.path.exists(f"{location}/VIDEOS"):
+            shutil.move(f"{location}/{file}", f"{location}/VIDEOS")
+            print(f"Moved {file} to {location}/VIDEOS")
         else:
-            os.mkdir(location + "/VIDEOS")
-            # move file into new folder
+            os.mkdir(f"{location}/VIDEOS")
+            shutil.move(f"{location}/{file}", f"{location}/VIDEOS")
+            print(f"Moved {file} to {location}/VIDEOS")
 
     if parts[1] in file_types.get("TEXT"):
         # print(f"{file} -> {parts[1]}")
-        if os.path.exists(location + "/TEXT_FILES"):
-            # move file into folder
-            pass
+        if os.path.exists(f"{location}/TEXT_FILES"):
+            shutil.move(f"{location}/{file}", f"{location}/TEXT_FILES")
+            print(f"Moved {file} to {location}/TEXT_FILES")
         else:
-            os.mkdir(location + "/TEXT_FILES")
-            # move file into new folder
+            os.mkdir(f"{location}/TEXT_FILES")
+            shutil.move(f"{location}/{file}", f"{location}/TEXT_FILES")
+            print(f"Moved {file} to {location}/TEXT_FILES")
 
     if parts[1] in file_types.get("JSON"):
         # print(f"{file} -> {parts[1]}")
-        if os.path.exists(location + "/JSON_FILES"):
-            # move file into folder
-            pass
+        if os.path.exists(f"{location}/JSON_FILES"):
+            shutil.move(f"{location}/{file}", f"{location}/JSON_FILES")
+            print(f"Moved {file} to {location}/JSON_FILES")
         else:
-            os.mkdir(location + "/JSON_FILES")
-            # move file into new folder  
+            os.mkdir(f"{location}/JSON_FILES")
+            shutil.move(f"{location}/{file}", f"{location}/JSON_FILES")  
+            print(f"Moved {file} to {location}/JSON_FILES")
                       
     if parts[1] in file_types.get("CSV"):
         # print(f"{file} -> {parts[1]}")
-        if os.path.exists(location + "/CSV_FILES"):
-            # move file into folder
-            pass
+        if os.path.exists(f"{location}/CSV_FILES"):
+            shutil.move(f"{location}/{file}", f"{location}/CSV_FILES")
+            print(f"Moved {file} to {location}/CSV_FILES")
         else:
-            os.mkdir(location + "/CSV_FILES")
-            # move file into new folder
+            os.mkdir(f"{location}/CSV_FILES")
+            shutil.move(f"{location}/{file}", f"{location}/CSV_FILES")
+            print(f"Moved {file} to {location}/CSV_FILES")
