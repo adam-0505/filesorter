@@ -31,30 +31,34 @@ def main():
                 }
 
     for file in files:
-        parts = file.split(".")
+        parts = file.rsplit(".", 1)
         known = False
 
-        if parts[1] in file_types.get("IMAGE"):
+        if len(parts) == 1:
+            print("Unknown file type")
+            continue
+
+        if parts[1].lower() in file_types.get("IMAGE"):
             # print(f"{file} -> {parts[1]}")
             move_file(location, file, "IMAGES")
             known = True
 
-        if parts[1] in file_types.get("VIDEO"):
+        if parts[1].lower() in file_types.get("VIDEO"):
             # print(f"{file} -> {parts[1]}")
             move_file(location, file, "VIDEOS")
             known = True
 
-        if parts[1] in file_types.get("TEXT"):
+        if parts[1].lower() in file_types.get("TEXT"):
             # print(f"{file} -> {parts[1]}")
             move_file(location, file, "TEXT_FILES")
             known = True
 
-        if parts[1] in file_types.get("JSON"):
+        if parts[1].lower() in file_types.get("JSON"):
             # print(f"{file} -> {parts[1]}")
             move_file(location, file, "JSON_FILES")
             known = True
                         
-        if parts[1] in file_types.get("CSV"):
+        if parts[1].lower() in file_types.get("CSV"):
             # print(f"{file} -> {parts[1]}")
             move_file(location, file, "CSV_FILES")
             known = True
