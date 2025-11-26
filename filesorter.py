@@ -29,39 +29,28 @@ def main():
                 "CSV": ["csv"],
                 "JSON": ["json"]
                 }
+    
+    folder_names = {"IMAGE": "IMAGES",
+                    "VIDEO": "VIDEOS",
+                    "TEXT": "TEXT_FILES",
+                    "CSV": "CSV_FILES",
+                    "JSON": "JSON_FILES"}
 
     for file in files:
         parts = file.rsplit(".", 1)
+        extension = parts[1].lower()
         known = False
 
         if len(parts) == 1:
             print("Unknown file type")
             continue
 
-        if parts[1].lower() in file_types.get("IMAGE"):
-            # print(f"{file} -> {parts[1]}")
-            move_file(location, file, "IMAGES")
-            known = True
-
-        if parts[1].lower() in file_types.get("VIDEO"):
-            # print(f"{file} -> {parts[1]}")
-            move_file(location, file, "VIDEOS")
-            known = True
-
-        if parts[1].lower() in file_types.get("TEXT"):
-            # print(f"{file} -> {parts[1]}")
-            move_file(location, file, "TEXT_FILES")
-            known = True
-
-        if parts[1].lower() in file_types.get("JSON"):
-            # print(f"{file} -> {parts[1]}")
-            move_file(location, file, "JSON_FILES")
-            known = True
-                        
-        if parts[1].lower() in file_types.get("CSV"):
-            # print(f"{file} -> {parts[1]}")
-            move_file(location, file, "CSV_FILES")
-            known = True
+        for category, extensions in file_types.items():
+            if extension in extensions:
+                folder_name = folder_names[category]
+                move_file(location, file, folder_name)
+                known = True
+                break
 
         if not known:
             print(f"Unknown '{file}'")
