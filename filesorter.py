@@ -40,12 +40,14 @@ def main():
 
     for file in files:
         parts = file.rsplit(".", 1)
-        extension = parts[1].lower()
-        known = False
 
         if len(parts) == 1:
             print("Unknown file type")
+            unknown_files += 1
             continue
+
+        extension = parts[1].lower()
+        known = False
 
         for category, extensions in file_types.items():
             if extension in extensions:
