@@ -14,6 +14,8 @@ def move_file(location, file, file_type):
 
 def main():
     location = "C:/Users/Adam/Desktop/Testdateien" #TODO: change to input()
+    moved_files = 0
+    unknown_files = 0
 
     if not os.path.exists(location):
         print(f"Location does not exist: {location}")
@@ -49,11 +51,15 @@ def main():
             if extension in extensions:
                 folder_name = folder_names[category]
                 move_file(location, file, folder_name)
-                known = True
+                moved_files += 1
+                known = True                
                 break
 
         if not known:
             print(f"Unknown '{file}'")
+            unknown_files += 1
+        
+        print(f"Moved {moved_files} files, {unknown_files} unknown")
 
 
 if __name__ == '__main__':
