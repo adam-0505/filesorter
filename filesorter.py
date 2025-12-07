@@ -13,7 +13,7 @@ def move_file(location, file, file_type):
 
 
 def main():
-    location = "C:/Users/Adam/Desktop/Testdateien" #TODO: change to input()
+    location = input("Enter path: ")
     moved_files = 0
     unknown_files = 0
 
@@ -42,7 +42,7 @@ def main():
         parts = file.rsplit(".", 1)
 
         if len(parts) == 1:
-            print("Unknown file type")
+            print(f"Unknown file type '{file}'")
             unknown_files += 1
             continue
 
@@ -59,9 +59,9 @@ def main():
 
         if not known:
             print(f"Unknown '{file}'")
-            unknown_files += 1
-        
-        print(f"Moved {moved_files} files, {unknown_files} unknown")
+            unknown_files += 1        
+
+    print(f"Moved {moved_files} files, {unknown_files} unknown")
 
 
 if __name__ == '__main__':
